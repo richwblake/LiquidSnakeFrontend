@@ -4,8 +4,8 @@ import '../../Stylesheets/gameboard.css'
 export default class GameBoardContainer extends Component {
     state = {
         board: {
-            rows: 20,
-            cols: 20,
+            rows: 25,
+            cols: 25,
             grid: []
         }
     }
