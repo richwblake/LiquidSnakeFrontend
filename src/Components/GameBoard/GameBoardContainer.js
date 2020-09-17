@@ -16,11 +16,9 @@ export default class GameBoardContainer extends Component {
     createGameGrid() {
         return this.state.board.grid.map(block => {
             if (block.row === this.state.board.food.row && block.col === this.state.board.food.col) {
-                return <Square class={'food-square'} />
+                return <Square key={block.row.toString() + '-' + block.col.toString()} class={'food-square'} />
             } else {
-                console.log(this.state.board.food.row, this.state.board.food.col)
-                console.log(block.row, block.col)
-                return <Square class={'board-square'} />
+                return <Square key={block.row.toString() + '-' + block.col.toString()} class={'board-square'} />
             }
         })
     }
@@ -53,12 +51,6 @@ export default class GameBoardContainer extends Component {
     }
 
     componentDidMount() {
-        // this.setState({
-        //     board: {
-        //         ...this.state.board,
-        //         food: 
-        //     }
-        // })
         this.generateGridArray();
     }
 
