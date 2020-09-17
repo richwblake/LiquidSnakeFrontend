@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../../Stylesheets/gameboard.css'
-import Food from './Food'
+import Square from './Square'
 
 export default class GameBoardContainer extends Component {
     state = {
