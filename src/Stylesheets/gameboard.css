@@ -26,3 +26,9 @@ html {
   width: 28px;
   height: 28px;
 }
+
+.food-square {
+  width: 28px;
+  height: 28px;
+  background-color: #b4e5af;
+}

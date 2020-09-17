@@ -7,19 +7,28 @@ export default class GameBoardContainer extends Component {
         board: {
             rows: 25,
             cols: 25,
-            grid: []
+            grid: [],
+            food: this.getRandomSquareForFood()
         }
     }
 
     // Creates div grid to display snake board
     createGameGrid() {
-        return this.state.board.grid.map(block => <div key={block.row.toString() + '-' + block.col.toString()} className='board-square'></div>)
+        return this.state.board.grid.map(block => {
+            if (block.row === this.state.board.food.row && block.col === this.state.board.food.col) {
+                return <Square class={'food-square'} />
+            } else {
+                console.log(this.state.board.food.row, this.state.board.food.col)
+                console.log(block.row, block.col)
+                return <Square class={'board-square'} />
+            }
+        })
     }
 
     getRandomSquareForFood() {
         return {
-            row: Math.floor(Math.random() * this.state.board.rows),
-            col: Math.floor(Math.random() * this.state.board.cols)
+            row: Math.floor(Math.random() * 25),
+            col: Math.floor(Math.random() * 25)
         }
     }
 
@@ -44,18 +53,19 @@ export default class GameBoardContainer extends Component {
     }
 
     componentDidMount() {
+        // this.setState({
+        //     board: {
+        //         ...this.state.board,
+        //         food: 
+        //     }
+        // })
         this.generateGridArray();
     }
 
     render() {
-        // const createGameGrid = () => {
-        //     console.log("this ran")
-        //     return this.state.board.grid.map(block => <div key={block.row.toString() + '-' + block.col.toString()} className='board-square'></div>)
-        // }
-
         return(
             <div className='snake-board'>
-                <Food foodCoordinates={this.getRandomSquareForFood()} />
+                {this.createGameGrid()}
             </div>
         )
     }
