@@ -12,7 +12,8 @@ export default class GameBoardContainer extends Component {
         ]
     }
 
-    
+    getRandomCoordinatesForFood = () => {
+    }
 
     componentDidMount() {
 
