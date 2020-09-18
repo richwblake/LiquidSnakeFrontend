@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
 import '../../Stylesheets/gameboard.css'
-import Snake from './Snake';
+import SnakeContainer from '../Snake/SnakeContainer'
 
 
 export default class GameBoardContainer extends Component {
-    state = {
-        snakePieces: [
-            [0, 0],
-            [0, 3],
-            [0, 6]
-        ]
-    }
-
-    getRandomCoordinatesForFood = () => {
-    }
+    state =  {}
 
     componentDidMount() {
 
@@ -22,7 +13,7 @@ export default class GameBoardContainer extends Component {
     render() {
         return(
             <div className='game-board'>
-                <Snake snakePieces={this.state.snakePieces} />
+                <SnakeContainer />
             </div>
         )
     }
