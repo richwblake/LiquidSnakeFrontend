@@ -15,15 +15,15 @@ html {
 .game-board {
   position: relative;
   margin: 20px auto;
-  width: 650px;
-  height: 650px;
+  width: 700px;
+  height: 700px;
   border: 1px solid #b4e5af;
 }
 
 .snake-piece {
   position: absolute;
-  width: 3%;
-  height: 3%;
+  width: 4%;
+  height: 4%;
   background-color: #b4e5af;
   border: 1px solid black;
 }

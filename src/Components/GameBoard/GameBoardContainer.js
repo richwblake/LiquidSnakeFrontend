@@ -4,10 +4,16 @@ import SnakeContainer from '../Snake/SnakeContainer'
 
 
 export default class GameBoardContainer extends Component {
-    state =  {}
+    state =  {
+        
+    }
 
     componentDidMount() {
 
+    }
+
+    getRandomCoordinatesForFood() {
+        
     }
 
     render() {
