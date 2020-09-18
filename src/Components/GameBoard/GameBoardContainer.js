@@ -15,7 +15,7 @@ export default class GameBoardContainer extends Component {
 
     render() {
         return(
-            <div className='snake-board'>
+            <div className='game-board'>
 
             </div>
         )
