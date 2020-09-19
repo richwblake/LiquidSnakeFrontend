@@ -1,9 +1,7 @@
-export default class Helpers {
-    boardMaxAndMinCoordinates = () => {
-        return{
+class Helpers {
+    boardMaxAndMinCoordinates = {
             max: 96,
             min: 0
-        }
     }
 
     getRandomCoordinates = () => {
@@ -13,3 +11,5 @@ export default class Helpers {
         ]
     }
 }
+
+export default new Helpers();
