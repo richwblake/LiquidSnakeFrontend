@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../Stylesheets/gameboard.css'
 import SnakeContainer from '../Snake/SnakeContainer'
+import Helpers from '../../Helpers';
 
 
 export default class GameBoardContainer extends Component {
@@ -13,7 +14,7 @@ export default class GameBoardContainer extends Component {
     }
 
     getRandomCoordinatesForFood() {
-        
+        return Helpers.getRandomCoordinatesForFood();
     }
 
     render() {
