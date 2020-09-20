@@ -19,9 +19,9 @@ class GameBoardContainer extends Component {
     render() {
         return(
             <div className='game-board'>
-                {console.log(this.props.snake)}
+                {console.log(this.props.foodCoordinates)}
                 <SnakeContainer />
-                <Food foodCoordinates={this.getRandomCoordinatesForFood()} />
+                <Food foodCoordinates={this.props.foodCoordinates} />
             </div>
         )
     }
@@ -29,7 +29,7 @@ class GameBoardContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        snake: state.snake
+        foodCoordinates: state.board.foodCoordinates
     }
 }
 
