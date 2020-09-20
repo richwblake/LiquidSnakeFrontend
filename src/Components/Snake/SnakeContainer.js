@@ -21,21 +21,30 @@ export default class SnakeContainer extends Component {
 
     componentDidUpdate() {
         this.checkIfSnakeIsOutOfBound();
+        this.checkIfSnakeAteItself();
     }
 
     onKeyDown = (event) => {
         switch(event.keyCode) {
             case 37:
-                this.setState({ direction: 'LEFT' })
+                if (this.state.direction !== 'RIGHT') {
+                    this.setState({ direction: 'LEFT' });
+                }
                 break;
             case 38:
-                this.setState({ direction: 'UP' })
+                if (this.state.direction !== 'DOWN') {
+                    this.setState({ direction: 'UP' });
+                }
                 break;
             case 39:
-                this.setState({ direction: 'RIGHT' })
+                if (this.state.direction !== 'LEFT') {
+                    this.setState({ direction: 'RIGHT' });
+                }
                 break;
             case 40:
-                this.setState({ direction: 'DOWN' })
+                if (this.state.direction !== 'UP') {
+                    this.setState({ direction: 'DOWN' });
+                }
                 break;
             default:
                 break;
@@ -44,7 +53,6 @@ export default class SnakeContainer extends Component {
     }
 
     moveSnake = () => {
-        console.log([...this.state.snakePieces])
         let snake = [...this.state.snakePieces];
         let head = snake[snake.length - 1];
 
@@ -75,12 +83,24 @@ export default class SnakeContainer extends Component {
     checkIfSnakeIsOutOfBound() {
         const head = [...this.state.snakePieces[this.state.snakePieces.length - 1]];
         if (head[0] >= 100 || head[0] < 0 || head[1] >= 100 || head[1] < 0 ) {
-            this.gameOver();
+            this.gameOver(`You hit a wall! Your score is ${this.state.snakePieces.length}`);
         }
     }
 
-    gameOver = () => {
-        alert('GAME OVER');
+    checkIfSnakeAteItself() {
+        let snake = [...this.state.snakePieces];
+        const head = snake[snake.length - 1];
+        snake.pop();
+
+        snake.forEach(snakePiece => {
+            if (head[0] === snakePiece[0] && head[1] === snakePiece[1]) {
+                this.gameOver(`You ate yourself! Your score is ${this.state.snakePieces.length}`);
+            }
+        })
+    }
+
+    gameOver = (message) => {
+        alert(message);
         this.setState(Helpers.getInitialState())
     }
 
