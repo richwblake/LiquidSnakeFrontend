@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Snake from './Snake';
 import Helpers from '../../Helpers';
 import { connect } from 'react-redux';
+import { updateSnake } from '../../Actions/Snake/updateSnake'
 
 class SnakeContainer extends Component {
     state = {
@@ -76,9 +77,7 @@ class SnakeContainer extends Component {
 
         snake.push(head);
         snake.shift();
-        this.setState({
-            snakePieces: snake
-        });
+        this.props.updateSnake(snake);
     }
 
     checkIfSnakeIsOutOfBound() {
@@ -119,4 +118,12 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(SnakeContainer);
+const mapDispatchToProps = dispatch => {
+    return {
+        updateSnake: snakePieces => {
+            dispatch(updateSnake(snakePieces));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SnakeContainer);

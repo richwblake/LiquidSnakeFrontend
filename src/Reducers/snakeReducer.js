@@ -9,7 +9,12 @@ export default (
         velocity: 200
     }, 
     action) => {
-    switch(action) {
+    switch(action.type) {
+        case 'UPDATE_SNAKE':
+            return {
+                ...state,
+                snakePieces: action.payload
+            }
         default:
             return state;
     } 
