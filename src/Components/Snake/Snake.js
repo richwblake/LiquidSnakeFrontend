@@ -5,8 +5,8 @@ export default (props) => {
         <div>
             {props.snakePieces.map((snakePiece, index) => {
                 const style = {
-                    top: `${snakePiece.shift()}%`,
-                    left: `${snakePiece.pop()}%`
+                    top: `${snakePiece[0]}%`,
+                    left: `${snakePiece[1]}%`
                 }
                 return(
                     <div

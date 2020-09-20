@@ -5,9 +5,11 @@ class Helpers {
     }
 
     getRandomCoordinates = () => {
+        const max =  Math.floor(Math.random() * (this.boardMaxAndMinCoordinates.max - this.boardMaxAndMinCoordinates.min + 1));
+        const min =  Math.floor(Math.random() * (this.boardMaxAndMinCoordinates.max - this.boardMaxAndMinCoordinates.min + 1));
         return [
-            Math.floor(Math.random() * (this.boardMaxAndMinCoordinates.max - this.boardMaxAndMinCoordinates.min + 1)),
-            Math.floor(Math.random() * (this.boardMaxAndMinCoordinates.max - this.boardMaxAndMinCoordinates.min + 1))
+            max - max % 4,
+            min - min % 4
         ]
     }
 }
