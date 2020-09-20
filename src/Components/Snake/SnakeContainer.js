@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Snake from './Snake';
 import Helpers from '../../Helpers';
+import { connect } from 'react-redux';
 
-export default class SnakeContainer extends Component {
+class SnakeContainer extends Component {
     state = {
         snakePieces: [
             [0, 0],
@@ -110,3 +111,11 @@ export default class SnakeContainer extends Component {
         )
     }
 };
+
+const mapStateToProps = state => {
+    return {
+        foodCoordinates: state.board.foodCoordinates
+    }
+}
+
+export default connect(mapStateToProps)(SnakeContainer);
