@@ -12,6 +12,18 @@ class Helpers {
             min - min % 4
         ]
     }
+
+    getInitialState = () => {
+        return {
+            snakePieces: [
+                [0, 0],
+                [4, 0],
+                [8, 0]
+            ],
+            direction: 'RIGHT',
+            velocity: 200
+        }
+    }
 }
 
 export default new Helpers();
