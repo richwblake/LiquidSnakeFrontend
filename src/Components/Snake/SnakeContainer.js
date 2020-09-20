@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Snake from './Snake';
-import Helpers from '../../Helpers';
 import { connect } from 'react-redux';
 import { updateSnake } from '../../Actions/Snake/updateSnake';
 import { resetSnake } from '../../Actions/Snake/resetSnake';
+import { makeNewFood } from '../../Actions/Board/makeNewFood';
 
 class SnakeContainer extends Component {
     state = {
@@ -103,6 +103,7 @@ class SnakeContainer extends Component {
     gameOver = (message) => {
         alert(message);
         this.props.resetSnake();
+        this.props.makeNewFood();
     }
 
     render() {
@@ -126,6 +127,9 @@ const mapDispatchToProps = dispatch => {
         },
         resetSnake: () => {
             dispatch(resetSnake());
+        },
+        makeNewFood: () => {
+            dispatch(makeNewFood());
         }
     }
 }
