@@ -16,7 +16,7 @@ class SnakeContainer extends Component {
 
     componentDidMount() {
         alert('Start game?');
-        setInterval(this.moveSnake, this.state.velocity)
+        setInterval(this.moveSnake, this.props.snake.velocity)
         document.onkeydown = this.onKeyDown;
     }
 
@@ -28,36 +28,36 @@ class SnakeContainer extends Component {
     onKeyDown = (event) => {
         switch(event.keyCode) {
             case 37:
-                if (this.state.direction !== 'RIGHT') {
+                // if (this.state.direction !== 'RIGHT') {
                     this.setState({ direction: 'LEFT' });
-                }
+                // }
                 break;
             case 38:
-                if (this.state.direction !== 'DOWN') {
+                // if (this.state.direction !== 'DOWN') {
                     this.setState({ direction: 'UP' });
-                }
+                // }
                 break;
             case 39:
-                if (this.state.direction !== 'LEFT') {
+                // if (this.state.direction !== 'LEFT') {
                     this.setState({ direction: 'RIGHT' });
-                }
+                // }
                 break;
             case 40:
-                if (this.state.direction !== 'UP') {
+                // if (this.state.direction !== 'UP') {
                     this.setState({ direction: 'DOWN' });
-                }
+                // }
                 break;
             default:
                 break;
         }
-        console.log(this.state.direction)
     }
 
     moveSnake = () => {
-        let snake = [...this.state.snakePieces];
+        console.log(this.props.snake.direction)
+        let snake = [...this.props.snake.snakePieces];
         let head = snake[snake.length - 1];
 
-        switch(this.state.direction) {
+        switch(this.props.snake.direction) {
             case 'LEFT':
                 head = [head[0] - 4, head[1]];
                 break;
@@ -82,20 +82,20 @@ class SnakeContainer extends Component {
     }
 
     checkIfSnakeIsOutOfBound() {
-        const head = [...this.state.snakePieces[this.state.snakePieces.length - 1]];
+        const head = [...this.props.snake.snakePieces[this.props.snake.snakePieces.length - 1]];
         if (head[0] >= 100 || head[0] < 0 || head[1] >= 100 || head[1] < 0 ) {
-            this.gameOver(`You hit a wall! Your score is ${this.state.snakePieces.length}`);
+            this.gameOver(`You hit a wall! Your score is ${this.props.snake.snakePieces.length}`);
         }
     }
 
     checkIfSnakeAteItself() {
-        let snake = [...this.state.snakePieces];
+        let snake = [...this.props.snake.snakePieces];
         const head = snake[snake.length - 1];
         snake.pop();
 
         snake.forEach(snakePiece => {
             if (head[0] === snakePiece[0] && head[1] === snakePiece[1]) {
-                this.gameOver(`You ate yourself! Your score is ${this.state.snakePieces.length}`);
+                this.gameOver(`You ate yourself! Your score is ${this.props.snake.snakePieces.length}`);
             }
         })
     }
@@ -107,14 +107,15 @@ class SnakeContainer extends Component {
 
     render() {
         return(
-            <Snake snakePieces={this.state.snakePieces} />
+            <Snake snakePieces={this.props.snake.snakePieces} />
         )
     }
 };
 
 const mapStateToProps = state => {
     return {
-        foodCoordinates: state.board.foodCoordinates
+        foodCoordinates: state.board.foodCoordinates,
+        snake: state.snake
     }
 }
 
