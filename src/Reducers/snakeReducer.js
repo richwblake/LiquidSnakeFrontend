@@ -1,13 +1,7 @@
+import Helpers from '../Helpers';
+
 export default (
-    state = {
-        snakePieces: [
-            [0, 0],
-            [4, 0],
-            [8, 0]
-        ],
-        direction: 'RIGHT',
-        velocity: 200
-    }, 
+    state = Helpers.getInitialState(), 
     action) => {
     switch(action.type) {
         case 'UPDATE_SNAKE':
@@ -15,6 +9,8 @@ export default (
                 ...state,
                 snakePieces: action.payload
             }
+        case 'RESET_SNAKE':
+            return Helpers.getInitialState();
         default:
             return state;
     } 
