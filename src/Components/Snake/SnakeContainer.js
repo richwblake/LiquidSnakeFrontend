@@ -75,9 +75,13 @@ export default class SnakeContainer extends Component {
     checkIfSnakeIsOutOfBound() {
         const head = [...this.state.snakePieces[this.state.snakePieces.length - 1]];
         if (head[0] >= 100 || head[0] < 0 || head[1] >= 100 || head[1] < 0 ) {
-            alert('GAME OVER');
-            this.setState(Helpers.getInitialState())
+            this.gameOver();
         }
+    }
+
+    gameOver = () => {
+        alert('GAME OVER');
+        this.setState(Helpers.getInitialState())
     }
 
     render() {
