@@ -17,6 +17,7 @@ class SnakeContainer extends Component {
     componentDidUpdate() {
         this.checkIfSnakeIsOutOfBound();
         this.checkIfSnakeAteItself();
+        this.checkIfSnakeAteFood();
     }
 
     onKeyDown = (event) => {
@@ -89,6 +90,22 @@ class SnakeContainer extends Component {
                 this.gameOver(`You ate yourself! Your score is ${this.props.snake.snakePieces.length}`);
             }
         })
+    }
+
+    checkIfSnakeAteFood() {
+        const snake = [...this.props.snake.snakePieces];
+        const head = snake[snake.length - 1];
+
+        if (head[0] === this.props.foodCoordinates[0] && head[1] === this.props.foodCoordinates[1]) {
+            this.makeSnakeBigger();
+            this.props.makeNewFood();
+        }
+    }
+
+    makeSnakeBigger() {
+        let newSnake = [...this.props.snake.snakePieces]
+        newSnake.unshift([]);
+        this.props.updateSnake(newSnake);
     }
 
     gameOver = (message) => {
