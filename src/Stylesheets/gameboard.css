@@ -40,11 +40,16 @@ html {
 
 .control-panel {
   margin-top: 15%;
-  margin-right: 20%;
+  margin-right: 10%;
+  margin-left: 65%;
   text-align: right;
 }
 
 .score-panel {
   font-family: 'Press Start 2P';
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid #b4e5af;
   color: #b4e5af
 }

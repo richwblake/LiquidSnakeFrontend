@@ -1,3 +1,14 @@
-export default () => {
-    return null;
+export default (state = {
+    currentScore: 0,
+    highscores: [[]]
+}, action) => {
+    switch(action.type) {
+        case 'SET_CURRENT_SCORE':
+            return {
+                ...state,
+                currentScore: (action.payload * 100) - 300
+            }
+        default:
+            return state;
+    }
 }

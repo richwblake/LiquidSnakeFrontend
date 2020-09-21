@@ -5,12 +5,13 @@ import { updateSnake } from '../../Actions/Snake/updateSnake';
 import { resetSnake } from '../../Actions/Snake/resetSnake';
 import { makeNewFood } from '../../Actions/Board/makeNewFood';
 import { changeSnakeDirection } from '../../Actions/Snake/changeSnakeDirection';
+import { setCurrentScore } from '../../Actions/Score/setCurrentScore';
 
 class SnakeContainer extends Component {
 
     componentDidMount() {
         alert('Start game?');
-        // this.startGame();
+        this.startGame();
         document.onkeydown = this.onKeyDown;
     }
 
@@ -106,6 +107,7 @@ class SnakeContainer extends Component {
         let newSnake = [...this.props.snake.snakePieces]
         newSnake.unshift([]);
         this.props.updateSnake(newSnake);
+        this.props.setCurrentScore(newSnake.length);
     }
 
     gameOver = (message) => {
@@ -145,6 +147,9 @@ const mapDispatchToProps = dispatch => {
         },
         changeSnakeDirection: direction => {
             dispatch(changeSnakeDirection(direction))
+        },
+        setCurrentScore: snakeLength => {
+            dispatch(setCurrentScore(snakeLength))
         }
     }
 }

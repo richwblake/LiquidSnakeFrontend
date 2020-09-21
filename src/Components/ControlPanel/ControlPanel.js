@@ -10,7 +10,7 @@ class ControlPanel extends Component {
     render() {
         return(
             <div className='control-panel'>
-                <ScorePanel />
+                <ScorePanel currentScore={this.props.currentScore}/>
                 <StartGameButton />
                 <RestartGameButton />
             </div>
@@ -18,4 +18,10 @@ class ControlPanel extends Component {
     }
 };
 
-export default connect()(ControlPanel);
+const mapStateToProps = state => {
+    return {
+        currentScore: state.score.currentScore
+    }
+}
+
+export default connect(mapStateToProps)(ControlPanel);
