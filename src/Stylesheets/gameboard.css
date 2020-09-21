@@ -38,7 +38,12 @@ html {
   z-index: 1;
 }
 
-.btn {
-  float: right;
-  margin-right: 25%;
+.control-panel {
+  margin-top: 15%;
+  text-align: right;
+}
+
+.score-panel {
+  font-family: 'Press Start 2P';
+  color: #b4e5af
 }
