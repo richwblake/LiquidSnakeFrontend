@@ -4,17 +4,9 @@ import { connect } from 'react-redux';
 import { updateSnake } from '../../Actions/Snake/updateSnake';
 import { resetSnake } from '../../Actions/Snake/resetSnake';
 import { makeNewFood } from '../../Actions/Board/makeNewFood';
+import { changeSnakeDirection } from '../../Actions/Snake/changeSnakeDirection';
 
 class SnakeContainer extends Component {
-    state = {
-        snakePieces: [
-            [0, 0],
-            [4, 0],
-            [8, 0]
-        ],
-        direction: 'RIGHT',
-        velocity: 200
-    }
 
     componentDidMount() {
         alert('Start game?');
@@ -30,24 +22,24 @@ class SnakeContainer extends Component {
     onKeyDown = (event) => {
         switch(event.keyCode) {
             case 37:
-                // if (this.state.direction !== 'RIGHT') {
-                    this.setState({ direction: 'LEFT' });
-                // }
+                if (this.props.snake.direction !== 'RIGHT') {
+                    this.props.changeSnakeDirection('LEFT');
+                }
                 break;
             case 38:
-                // if (this.state.direction !== 'DOWN') {
-                    this.setState({ direction: 'UP' });
-                // }
+                if (this.props.snake.direction !== 'DOWN') {
+                    this.props.changeSnakeDirection('UP');
+                }
                 break;
             case 39:
-                // if (this.state.direction !== 'LEFT') {
-                    this.setState({ direction: 'RIGHT' });
-                // }
+                if (this.props.snake.direction !== 'LEFT') {
+                    this.props.changeSnakeDirection('RIGHT');
+                }
                 break;
             case 40:
-                // if (this.state.direction !== 'UP') {
-                    this.setState({ direction: 'DOWN' });
-                // }
+                if (this.props.snake.direction !== 'UP') {
+                    this.props.changeSnakeDirection('DOWN');
+                }
                 break;
             default:
                 break;
@@ -55,7 +47,6 @@ class SnakeContainer extends Component {
     }
 
     moveSnake = () => {
-        console.log(this.props.snake.direction)
         let snake = [...this.props.snake.snakePieces];
         let head = snake[snake.length - 1];
 
@@ -130,6 +121,9 @@ const mapDispatchToProps = dispatch => {
         },
         makeNewFood: () => {
             dispatch(makeNewFood());
+        },
+        changeSnakeDirection: direction => {
+            dispatch(changeSnakeDirection(direction))
         }
     }
 }

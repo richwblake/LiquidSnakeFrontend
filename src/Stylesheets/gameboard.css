@@ -26,6 +26,7 @@ html {
   height: 4%;
   background-color: #b4e5af;
   border: 1px solid black;
+  z-index: 2;
 }
 
 .food {
@@ -33,4 +34,5 @@ html {
   width: 4%;
   height: 4%;
   background-color: blue;
+  z-index: 1;
 }

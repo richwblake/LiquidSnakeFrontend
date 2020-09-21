@@ -11,6 +11,11 @@ export default (
             }
         case 'RESET_SNAKE':
             return Helpers.getInitialState();
+        case 'CHANGE_SNAKE_DIRECTION':
+            return {
+                ...state,
+                direction: action.payload
+            }
         default:
             return state;
     } 
