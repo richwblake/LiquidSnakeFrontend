@@ -10,7 +10,7 @@ class SnakeContainer extends Component {
 
     componentDidMount() {
         alert('Start game?');
-        this.startGame();
+        // this.startGame();
         document.onkeydown = this.onKeyDown;
     }
 

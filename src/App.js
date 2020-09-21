@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Components/GameBoard/Header'
 import GameBoardContainer from './Components/GameBoard/GameBoardContainer'
-import RestartButton from './Components/GameBoard/RestartGameButton'
+import ControlPanel from './Components/ControlPanel/ControlPanel';
 
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
       <div className='game'>
         <Header />
         <GameBoardContainer />
-        <button className='btn'>say hi</button>
+        <ControlPanel />
       </div>
     )
   }
