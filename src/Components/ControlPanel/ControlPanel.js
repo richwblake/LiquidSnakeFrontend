@@ -1,5 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
+import { connect } from 'react-redux';
 import ScorePanel from './ScorePanel';
 import StartGameButton from './StartGameButton';
 import RestartGameButton from './RestartGameButton';
@@ -17,4 +18,4 @@ class ControlPanel extends Component {
     }
 };
 
-export default ControlPanel;
+export default connect()(ControlPanel);
