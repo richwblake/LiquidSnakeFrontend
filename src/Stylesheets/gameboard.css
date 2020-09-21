@@ -13,11 +13,12 @@ html {
 }
 
 .game-board {
-  position: relative;
-  margin: 20px auto;
+  position: fixed;
+  margin-left: 100px;
   width: 700px;
   height: 700px;
   border: 1px solid #b4e5af;
+  display: inline-block;
 }
 
 .snake-piece {
@@ -35,4 +36,9 @@ html {
   height: 4%;
   background-color: blue;
   z-index: 1;
+}
+
+.btn {
+  float: right;
+  margin-right: 25%;
 }

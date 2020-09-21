@@ -10,7 +10,7 @@ class SnakeContainer extends Component {
 
     componentDidMount() {
         alert('Start game?');
-        setInterval(this.moveSnake, this.props.snake.velocity)
+        this.startGame();
         document.onkeydown = this.onKeyDown;
     }
 
@@ -112,6 +112,10 @@ class SnakeContainer extends Component {
         alert(message);
         this.props.resetSnake();
         this.props.makeNewFood();
+    }
+
+    startGame() {
+        setInterval(this.moveSnake, this.props.snake.velocity)
     }
 
     render() {
