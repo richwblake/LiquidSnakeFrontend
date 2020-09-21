@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import ScorePanel from './ScorePanel';
 import StartGameButton from './StartGameButton';
-import PauseGameButton from './PauseGameButton';
+import RestartGameButton from './RestartGameButton';
 
 
 class ControlPanel extends Component {
@@ -11,7 +11,7 @@ class ControlPanel extends Component {
             <div className='control-panel'>
                 <ScorePanel />
                 <StartGameButton />
-                <PauseGameButton />
+                <RestartGameButton />
             </div>
         )
     }
