@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default () => {
+export default (props) => {
+
     return(
         <div className='start-game-btn'>
-            <button>Start Game</button>
+            {button}
         </div>
     )
 }

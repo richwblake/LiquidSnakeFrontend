@@ -6,7 +6,7 @@ export default (state = {
         case 'SET_CURRENT_SCORE':
             return {
                 ...state,
-                currentScore: (action.payload * 100) - 300
+                currentScore: action.payload * 100
             }
         default:
             return state;
