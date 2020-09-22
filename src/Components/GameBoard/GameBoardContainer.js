@@ -8,11 +8,15 @@ import ControlPanel from '../ControlPanel/ControlPanel'
 class GameBoardContainer extends Component {
     render() {
         return(
-            <div className='game-board'>
+            <React.Fragment>
+                <div className='game-board'>
+                    {/* <ControlPanel /> */}
+                    <SnakeContainer />
+                    <Food foodCoordinates={this.props.foodCoordinates} />
+                </div>
                 <ControlPanel />
-                <SnakeContainer />
-                <Food foodCoordinates={this.props.foodCoordinates} />
-            </div>
+            </React.Fragment>
+            
         )
     }
 }
