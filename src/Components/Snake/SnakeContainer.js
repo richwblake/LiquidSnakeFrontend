@@ -6,8 +6,14 @@ import { resetSnake } from '../../Actions/Snake/resetSnake';
 import { makeNewFood } from '../../Actions/Board/makeNewFood';
 import { changeSnakeDirection } from '../../Actions/Snake/changeSnakeDirection';
 import { setCurrentScore } from '../../Actions/Score/setCurrentScore';
+import { startGame } from '../../Actions/Board/startGame';
+import { stopGame } from '../../Actions/Board/stopGame';
 
 class SnakeContainer extends Component {
+
+    state = {
+        intervalId: null
+    }
 
     componentDidMount() {
         alert('Start game?');
@@ -77,7 +83,7 @@ class SnakeContainer extends Component {
     checkIfSnakeIsOutOfBound() {
         const head = [...this.props.snake.snakePieces[this.props.snake.snakePieces.length - 1]];
         if (head[0] >= 100 || head[0] < 0 || head[1] >= 100 || head[1] < 0 ) {
-            this.gameOver(`You hit a wall! Your score is ${this.props.snake.snakePieces.length}`);
+            this.gameOver();
         }
     }
 
@@ -110,14 +116,24 @@ class SnakeContainer extends Component {
         this.props.setCurrentScore(newSnake.length);
     }
 
-    gameOver = (message) => {
-        alert(message);
-        this.props.resetSnake();
-        this.props.makeNewFood();
+    gameOver() {
+        if (this.props.gameIsRunning === true) {
+            this.props.resetSnake();
+            this.props.makeNewFood();
+            clearInterval(this.state.intervalId)
+            this.props.stopGame();
+        }
+        
     }
 
     startGame() {
-        setInterval(this.moveSnake, this.props.snake.velocity)
+        if (this.props.gameIsRunning === false) {
+            const intervalId = setInterval(this.moveSnake, this.props.snake.velocity);
+            this.setState({
+                intervalId
+            })
+            this.props.startGame();
+        }
     }
 
     render() {
@@ -130,7 +146,8 @@ class SnakeContainer extends Component {
 const mapStateToProps = state => {
     return {
         foodCoordinates: state.board.foodCoordinates,
-        snake: state.snake
+        snake: state.snake,
+        gameIsRunning: state.board.gameIsRunning
     }
 }
 
@@ -150,6 +167,12 @@ const mapDispatchToProps = dispatch => {
         },
         setCurrentScore: snakeLength => {
             dispatch(setCurrentScore(snakeLength))
+        },
+        startGame: () => {
+            dispatch(startGame())
+        },
+        stopGame: () => {
+            dispatch(stopGame())
         }
     }
 }
