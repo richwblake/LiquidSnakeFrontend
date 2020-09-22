@@ -12,9 +12,11 @@ class ControlPanel extends Component {
     }
 
     handleChange = event => {
-        this.setState({
-            name: event.target.value
-        })
+        if (event.target.value.length <= 3) {
+            this.setState({
+                name: event.target.value
+            })
+        }
     }
 
     render() {
