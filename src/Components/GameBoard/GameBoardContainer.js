@@ -10,7 +10,6 @@ class GameBoardContainer extends Component {
         return(
             <React.Fragment>
                 <div className='game-board'>
-                    {/* <ControlPanel /> */}
                     <SnakeContainer />
                     <Food foodCoordinates={this.props.foodCoordinates} />
                 </div>
