@@ -62,6 +62,16 @@ html {
 }
 
 .highscores {
+  margin: auto;
+  width: 30%;
+  margin-top: 3%;
+  text-align: center;
   color: #b4e5af;
   font-family: 'Press Start 2P';
+  border: 1px solid #b4e5af;
+}
+
+div.highscores h1 {
+  text-decoration: underline;
+  margin-bottom: 5%;
 }
