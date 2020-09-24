@@ -13,7 +13,7 @@ class GameBoardContainer extends Component {
                     <SnakeContainer />
                     <Food foodCoordinates={this.props.foodCoordinates} />
                 </div>
-                <ControlPanel />
+                <ControlPanel history={this.props.history}/>
             </React.Fragment>
             
         )

@@ -21,13 +21,14 @@ class ControlPanel extends Component {
     }
 
     handleSubmit = event => {
+
         event.preventDefault();
         console.log(this.state.name)
         console.log(this.props.currentScore)
         this.props.submitPlayerScore({
             name: this.state.name.toUpperCase(),
             score: this.props.currentScore
-        })
+        }, this.props.history.push('/hiscores'))
     }
 
     render() {

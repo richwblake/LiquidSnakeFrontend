@@ -22,7 +22,6 @@ class SnakeContainer extends Component {
     }
 
     componentDidUpdate() {
-        startGame();
         this.checkIfSnakeIsOutOfBound();
         this.checkIfSnakeAteItself();
         this.checkIfSnakeAteFood();
