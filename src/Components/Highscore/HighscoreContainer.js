@@ -17,8 +17,8 @@ class HighscoreContainer extends Component {
     render() {
         return(
             <div className='highscores'>
-                <h1 style={{ color: '#b4e5af', textDecoration: 'underline' }}>Hiscore Page</h1>
-                <Score players={this.sortPlayersByScore()}/>
+                <h1>Hiscore Page</h1>
+                <Score players={this.props.players}/>
             </div>
         )
     }
